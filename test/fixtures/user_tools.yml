@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  tool_id: 1
+  cost: 1.5
+  available: false
+  image: MyString
+  description: MyText
+
+two:
+  user_id: 1
+  tool_id: 1
+  cost: 1.5
+  available: false
+  image: MyString
+  description: MyText
