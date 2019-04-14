@@ -10,15 +10,30 @@ require 'faker'
 # Faker for user
 
 10.times do
-  User.new(name: Faker::Name.name, username: Faker::Name.unique.name)
+  User.create(name: Faker::Name.name, username: Faker::Name.unique.name, password: Faker::String.random(8), phone: Faker::Number.number(9))
 end
 
 
 # Faker for tools
 
 10.times do
-  Tool.new(name: Faker::Commerce.product_name, category: Faker::Commerce.department(1))
+  Tool.create(name: Faker::Commerce.product_name, category_id: Faker::Number.number(1))
 end
 
-#Faker for
+#Faker for Category
 
+10.times do
+  Category.create(name: Faker::Commerce.department(1))
+end
+
+# # Faker for
+#
+# 10.times do
+#
+# end
+#
+# # Faker for
+#
+# 10.times do
+#
+# end
