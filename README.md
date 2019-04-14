@@ -1,24 +1,10 @@
-# README
+#Flatiron Mod 2 project:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Toolbox
 
-Things you may want to cover:
+You got tools? We are coming for you!
 
-* Ruby version
 
-* System dependencies
+#Developers
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Yevgeniy and Josh
