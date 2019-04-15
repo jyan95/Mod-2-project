@@ -1,13 +1,7 @@
 class UsersController < ApplicationController
-  # def show
-  #   @user = User.find(params[:id])
-  # end
-  #
-  # def edit
-  # end
-  #
+
   def new
-    @new = User.new
+    @user = User.new
   end
 
   def create
@@ -15,7 +9,7 @@ class UsersController < ApplicationController
     if user.valid?
       redirect_to user
     else
-      flash[:error] = user.errors.full_messages
+      flash[:errors] = user.errors.full_messages
       redirect_to new_user_path
     end
   end

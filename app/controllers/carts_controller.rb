@@ -10,4 +10,10 @@ class CartsController < ApplicationController
 
   # def new
   # end
+
+  private
+
+  # def get_instance
+  #   @instance = Cart.find(params[:id])
+  # end
 end

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resources :users, except: :index
   resources :categories, only: [:index,:show]
   resources :tools, only: [:edit,:index,:new,:show]
+  resources :carts
 
 end

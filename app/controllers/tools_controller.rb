@@ -4,12 +4,6 @@ class ToolsController < ApplicationController
     @all = Tool.all
   end
 
-  # def show
-  # end
-  #
-  # def edit
-  # end
-  #
   def new
     @new = Tool.new
   end
@@ -19,7 +13,7 @@ class ToolsController < ApplicationController
     if tool.valid?
       redirect_to tool_path(tool)
     else
-      flash[:error] = tool.errors.full_messages
+      flash[:errors] = tool.errors.full_messages
       redirect_to new_tool_path
     end
   end
