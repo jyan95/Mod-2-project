@@ -13,18 +13,24 @@ require 'faker'
   User.create(name: Faker::Name.name, username: Faker::Name.unique.name, password: Faker::String.random(8), phone: Faker::Number.number(9))
 end
 
-
-# Faker for tools
-
 10.times do
-  Tool.create(name: Faker::Commerce.product_name, category_id: Faker::Number.number(1))
+  UserTool.create(user_id: Faker::Number.number(1))
 end
+
 
 #Faker for Category
 
 10.times do
   Category.create(name: Faker::Commerce.department(1))
 end
+
+# Faker for tools
+
+10.times do
+  Tool.create(name: Faker::Commerce.product_name, category_id: Faker::Number.number(1), user_tool_id: Faker::Number.number(1))
+end
+
+
 
 # # Faker for
 #
