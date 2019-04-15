@@ -1,3 +1,57 @@
+# Hand tools
+# - bender
+# - clamp
+# - crimper
+# - cutter
+# - plastering
+# - hand saw
+# - toolkits
+# - masonry
+# - vises
+# - chisel
+# - crowbar
+#
+# Air & pneumatic
+# - air compressor
+# - air hose
+# - pneumatic hose clamps
+#
+#
+# Power tools
+# - drill
+# - heathen
+# - power saw
+# - wrench
+# - pipe cutter
+# - heat gun
+# - cable feeder
+# - power crimper
+# - rotary hammer
+#
+# Testing instruments
+# - electrical power testing
+# - fiber optics
+# - temperature and humidity
+# - phone line tester
+# - borescope
+# - light meter
+# - sound level meter
+#
+# Landscaping
+# - mower
+# - trimmer
+# - hose
+# - shovel
+# - snowblower
+# - wheelbarrow
+#
+# Cleaning
+# - vacuum
+# - pressure washer
+# - rake
+# - leaf blower
+
+
 require 'faker'
 
 # Faker for User

@@ -4,3 +4,5 @@
 <p>Tool: <%= @instance.name %></p>
 <p>Owner: <%= @instance.user.username %></p>
 <p>Category: <%= @instance.category.name %></p>
+<p>Cost: $<%= @instance.user_tool.cost %>/ day</p>
+<p>Description: <%= @instance.user_tool.description %></p>
