@@ -3,7 +3,4 @@ class CategoriesController < ApplicationController
     @all = Category.all
   end
 
-  # def show
-  # end
-
 end

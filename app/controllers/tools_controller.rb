@@ -4,12 +4,6 @@ class ToolsController < ApplicationController
     @all = Tool.all
   end
 
-  # def show
-  # end
-  #
-  # def edit
-  # end
-  #
   def new
     @new = Tool.new
   end
@@ -26,9 +20,9 @@ class ToolsController < ApplicationController
 
   private
 
-  # def get_instance
-  #   @instance = Tool.find(params[:id])
-  # end
+  def get_instance
+    @instance = Tool.find(params[:id])
+  end
 
   def tool_params
     params.require(:tool).permit(:name,:category_id)
