@@ -10,7 +10,11 @@
   </head>
 
   <body>
-  <h1>test</h1>
+    <%= render 'layouts/navigation' %>
+    <%= render 'layouts/messages' %>
+
     <%= yield %>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
