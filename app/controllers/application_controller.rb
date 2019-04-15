@@ -9,11 +9,7 @@ class ApplicationController < ActionController::Base
     #code
   end
 
-
-
-  # private
-  #
-  # def get_instance
-  #   @instance = self.class.find(params[:id])
-  # end
+  def get_instance
+    @instance = self.class.find(params[:id])
+  end
 end

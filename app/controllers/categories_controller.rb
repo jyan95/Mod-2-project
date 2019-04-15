@@ -6,9 +6,4 @@ class CategoriesController < ApplicationController
   # def show
   # end
 
-  private
-
-  def get_instance
-    @instance = Category.find(params[:id])
-  end
 end

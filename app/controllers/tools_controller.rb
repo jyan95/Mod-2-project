@@ -19,16 +19,16 @@ class ToolsController < ApplicationController
     if tool.valid?
       redirect_to tool_path(tool)
     else
-      flash[:error] = tool.errors.full_messages
+      flash[:errors] = tool.errors.full_messages
       redirect_to new_tool_path
     end
   end
 
   private
 
-  def get_instance
-    @instance = Tool.find(params[:id])
-  end
+  # def get_instance
+  #   @instance = Tool.find(params[:id])
+  # end
 
   def tool_params
     params.require(:tool).permit(:name,:category_id)
