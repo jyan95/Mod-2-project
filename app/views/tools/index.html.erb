@@ -1,2 +1,9 @@
 <h1>Tools#index</h1>
 <p>Find me in app/views/tools/index.html.erb</p>
+
+<% @all.each do |tool| %>
+  <p>
+    <%= link_to tool.name, tool_path(tool) %> -
+    <%= link_to tool.user.username, user_path(tool.user) %>
+  </p>
+<% end %>

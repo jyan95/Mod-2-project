@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_225956) do
   end
 
   create_table "tools", force: :cascade do |t|
+    t.integer "user_tool_id"
     t.string "name", null: false
     t.integer "category_id"
     t.datetime "created_at", null: false
@@ -42,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_04_13_225956) do
 
   create_table "user_tools", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "tool_id"
     t.float "cost"
     t.boolean "available", default: false
     t.string "image"
