@@ -2,7 +2,14 @@
 <p>Find me in app/views/tools/show.html.erb</p>
 
 <p>Tool: <%= @instance.name %></p>
-<p>Owner: <%= @instance.user.username %></p>
-<p>Category: <%= @instance.category.name %></p>
-<p>Cost: $<%= @instance.user_tool.cost %>/ day</p>
-<p>Description: <%= @instance.user_tool.description %></p>
+<p>
+  Currently offered by:
+  <ul>
+    <% @instance.users.each do |user| %>
+      <li>
+        <%= link_to user.username, user_path(user) %> -
+        <%= link_to "Add to Cart",  %>
+      </li>
+    <% end %>
+  </ul>
+</p>
