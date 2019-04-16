@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   get '/user/:id/edit-tool', to: 'users#edit_tool'
   patch '/user/:id', to: 'users#update_tool'
 
+  # Login and logout routes
+  get '/signup', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#login'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+
+
+
   # get 'carts/index'
   # get 'carts/show'
   # get 'carts/edit'
