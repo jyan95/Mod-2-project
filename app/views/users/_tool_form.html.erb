@@ -1,23 +1,25 @@
-<%= render 'shared/errors', obj: @tool%>
+<%= render 'shared/errors', obj: @user%>
 
 <div class="row">
   <div class="col-md-9 offset-md-3">
-    <%= form_for @tool do |f| %>
+    <%= form_for @instance, url: create_tool_path(@instance), action: create_tool_url, method: :post do |f| %>
       <div class="form-group">
         <div class="control-label col-sm-2">
-          <%= label_tag "Image", id: 'category_id' %>
+          <%= label_tag "Category" %>
         </div>
         <div class="col-sm-4">
-          <%= f.collection_select :tool, :category_id, Category.all, :id, :name, class: 'form-control' %>
+          <%= f.collection_select :user_tools, Category.all, :id, :name, class: 'form-control' %>
         </div>
       </div>
 
       <div class="form-group">
         <div class="control-label col-sm-2">
-          <%= f.label :name%>
+          <%= label_tag "Name" %>
         </div>
         <div class="col-sm-4">
-          <%= f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true%>
+          <input type="text" name="tool[name]" id="tool_name" class="form-control" placeholder="give it a name">
+
+          <%#= f.text_field :cost, class: 'form-control', placeholder: 'price'%>
         </div>
       </div>
 
@@ -51,8 +53,8 @@
 
       <%= f.submit class: 'btn btn-outline-primary' %>
     <% end %>
-      <div class="col-md-4 offset-4">
-        <%= link_to "Cancel", tools_path%>
-      </div>
+    <div class="col-md-4 offset-4">
+      <%= link_to "Cancel", tools_path%>
+    </div>
   </div>
 </div>

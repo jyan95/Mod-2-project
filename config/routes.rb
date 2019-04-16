@@ -5,7 +5,19 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
+<<<<<<< HEAD
   get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
+=======
+
+  # Create new tool by the user routes
+  get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
+  post '/user/:id', to: 'users#create_tool', as: 'create_tool'
+
+  # Edit tool by the user routes
+  get '/user/:id/edit-tool', to: 'users#edit_tool'
+  patch '/user/:id', to: 'users#update_tool'
+
+>>>>>>> e438dcc0385b27dff2c92ff15bb8c917e209a9ef
   # get 'carts/index'
   # get 'carts/show'
   # get 'carts/edit'
@@ -18,9 +30,10 @@ Rails.application.routes.draw do
   # get 'users/edit'
   # get 'users/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :users, except: :index
-  resources :categories, only: [:index,:show]
-  resources :tools, only: [:edit,:index,:new,:show]
+  resources :categories, only: [:index, :show]
+  resources :tools, only: [:index, :show]
   resources :carts
 
 end
