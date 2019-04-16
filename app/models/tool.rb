@@ -5,4 +5,5 @@ class Tool < ApplicationRecord
   def user
     self.user_tool.user
   end
+
 end
