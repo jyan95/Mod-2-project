@@ -1,4 +1,4 @@
-# Hand tools
+# Hand tools (general purpose)
 # - bender
 # - clamp
 # - crimper
@@ -16,7 +16,6 @@
 # - air hose
 # - pneumatic hose clamps
 #
-#
 # Power tools
 # - drill
 # - heathen
@@ -29,9 +28,9 @@
 # - rotary hammer
 #
 # Testing instruments
-# - electrical power testing
-# - fiber optics
-# - temperature and humidity
+# - electrical power tester
+# - fiber optics tester
+# - temperature and humidity monitor
 # - phone line tester
 # - borescope
 # - light meter
@@ -44,13 +43,20 @@
 # - shovel
 # - snowblower
 # - wheelbarrow
+# - sprinkler
 #
 # Cleaning
-# - vacuum
+# - vacuums
 # - pressure washer
-# - rake
+# - lawn tools
 # - leaf blower
 
+Category.create(name: "General Purpose")
+Category.create(name: "Air & Pneumatic")
+Category.create(name: "Power Cleaning")
+Category.create(name: "Testing")
+Category.create(name: "Landscaping")
+Category.create(name: "Power Tools")
 
 require 'faker'
 
@@ -70,32 +76,32 @@ Cart.destroy_all
 end
 
 # Faker for Cart
-
-20.times do
-  Cart.create(user_id: Faker::Number.number(1), total: Faker::Number.number(3))
-end
+#
+# 20.times do
+#   Cart.create(user_id: Faker::Number.number(1), total: Faker::Number.number(3))
+# end
 
 # Faker for Category
 
-20.times do
-  Category.create(name: Faker::Commerce.department(1))
-end
+# 20.times do
+#   Category.create(name: Faker::Commerce.department(1))
+# end
 
 # Faker for UserTool
 
-10.times do
-  UserTool.create(user_id: Faker::Number.number(1), cost: Faker::Number.number(2), description: Faker::String.random(20..50))
-end
+# 10.times do
+#   UserTool.create(user_id: Faker::Number.number(1), cost: Faker::Number.number(2), description: Faker::String.random(20..50))
+# end
 
 # Faker for Tool
-
-20.times do
-  # byebug
-  Tool.create(name: Faker::Commerce.product_name, category_id: Faker::Number.number(1), user_tool_id: Faker::Number.number(1))
-end
+#
+# 20.times do
+#   # byebug
+#   Tool.create(name: Faker::Commerce.product_name, category_id: Faker::Number.number(1))
+# end
 
 # Faker for CartTool
 
-20.times do
-  CartTool.create(cart_id: Faker::Number.number(1), user_tool_id: Faker::Number.number(1))
-end
+# 20.times do
+#   CartTool.create(cart_id: Faker::Number.number(1), user_tool_id: Faker::Number.number(1))
+# end
