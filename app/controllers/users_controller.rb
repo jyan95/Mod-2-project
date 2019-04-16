@@ -16,13 +16,16 @@ class UsersController < ApplicationController
 
   def new_tool
     @user = User.find(params[:id])
+    @categories = Category.all
     # @tool = Tool.new
     # @user_tool = UserTool.new
   end
 
   def create_tool
     user = User.find(params[:id])
-    user.add_user_tool_params(user_tool_params)
+    user.add_user_tool_params(user_tool_params, tool_params, category_id)
+
+    redirect_to tools_path
   end
 
   private
@@ -36,10 +39,14 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username,:password,:name,:phone)
+    params.require(:user).permit(:username, :password, :name, :phone)
   end
 
   def user_tool_params
     params.require(:user_tool).permit(:cost, :description, :image, :tool_id)
+  end
+
+  def category_id
+    params.require(:user).permit(:user_tools)
   end
 end
