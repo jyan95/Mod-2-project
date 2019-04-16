@@ -4,11 +4,14 @@ class ApplicationController < ActionController::Base
   before_action :authorized #lock down this whole app
   helper_method :current_cart
 
+  before_action :get_instance, only: [:show, :edit, :update, :destroy]
+  helper_method :current_cart, :current_user, :logged_in?
+
   def current_cart
     if session[:cart_id]
-      Cart.find(session[:cart_id])
+      CartTool.find(session[:cart_id])
     else
-      Cart.new
+      CartTool.new
     end
   end
 

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
+  get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
+
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
