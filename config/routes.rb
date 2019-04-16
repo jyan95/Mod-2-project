@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
-
+  get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
   # get 'carts/index'
   # get 'carts/show'
   # get 'carts/edit'

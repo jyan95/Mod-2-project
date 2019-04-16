@@ -4,6 +4,13 @@ class ToolsController < ApplicationController
     @all = Tool.all
   end
 
+  def show
+    user = User.find(61) # for testing
+    @cart = Cart.create(user_id: user.id)
+    # user = current_user
+    # @cart = Cart.find_by(user_id: user.id)
+  end
+
   def new
     @tool = Tool.new
   end
