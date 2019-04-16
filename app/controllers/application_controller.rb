@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  before_action :get_instance, only: [:show, :edit, :update, :destroy]
+
+  before_action :get_instance, only: [:show, :edit, :update, :destroy, :new_tool]
+
+ 
   helper_method :current_cart
 
   def current_cart
@@ -11,14 +14,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def show
 
-  end
+  def show; end
+
+  def edit; end
 
   def edit
 
   end
 
+  def cart
+    session[:cart] ||= []
+  end
 
 
 
