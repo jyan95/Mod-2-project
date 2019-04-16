@@ -5,9 +5,8 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
-<<<<<<< HEAD
   get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
-=======
+
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
@@ -17,7 +16,6 @@ Rails.application.routes.draw do
   get '/user/:id/edit-tool', to: 'users#edit_tool'
   patch '/user/:id', to: 'users#update_tool'
 
->>>>>>> e438dcc0385b27dff2c92ff15bb8c917e209a9ef
   # get 'carts/index'
   # get 'carts/show'
   # get 'carts/edit'
