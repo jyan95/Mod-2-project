@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     #code
   end
@@ -6,7 +7,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(session_username)
     if user && user.authenticate(session_password)
-      # login
+      log_in user
+      redirect_to user
     else
       # invalid
       redirect_to

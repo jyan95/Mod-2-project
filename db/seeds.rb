@@ -78,12 +78,12 @@ end
 
 # Faker for Category
 
-# Category.create(name: "General Purpose")
-# Category.create(name: "Air & Pneumatic")
-# Category.create(name: "Power Cleaning")
-# Category.create(name: "Testing")
-# Category.create(name: "Landscaping")
-# Category.create(name: "Power Tools")
+Category.create(name: "General Purpose")
+Category.create(name: "Air & Pneumatic")
+Category.create(name: "Power Cleaning")
+Category.create(name: "Testing")
+Category.create(name: "Landscaping")
+Category.create(name: "Power Tools")
 
 # 20.times do
 #   Category.create(name: Faker::Commerce.department(1))

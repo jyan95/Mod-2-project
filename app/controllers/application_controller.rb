@@ -10,13 +10,6 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def cart
-    session[:cart] ||= []
-  end
-
-  def add_to_cart(id)
-    cart << id
-  end
 
 
 
