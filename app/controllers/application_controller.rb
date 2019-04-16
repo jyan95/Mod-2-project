@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  before_action :get_instance, only: [:show, :edit, :update, :destroy]
+  before_action :get_instance, only: [:show, :edit, :update, :destroy, :new_tool]
 
   def show; end
 

@@ -5,8 +5,10 @@ class User < ApplicationRecord
 
 
   def add_user_tool_params(params)
-    user_tool.cost = params[:cost]
-    user_tool.image = params[:image]
-    user_tool.description = params[:description].strip
+    user_tools(params)
+    # user_tools.cost = params[:cost]
+    # user_tools.image = params[:image]
+    # user_tools.description = params[:description].strip
+    # user_tools.tool_id = params[:tool_id]
   end
 end

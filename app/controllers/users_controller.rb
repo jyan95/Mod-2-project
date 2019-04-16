@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def new_tool
     @user = User.find(params[:id])
-    @tool = Tool.new
+    # @tool = Tool.new
     # @user_tool = UserTool.new
   end
 
@@ -29,6 +29,10 @@ class UsersController < ApplicationController
 
   def get_instance
     @instance = User.find(params[:id])
+  end
+
+  def tool_params
+    params.require(:tool).permit(:name)
   end
 
   def user_params
