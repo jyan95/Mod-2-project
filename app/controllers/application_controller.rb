@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+
   before_action :get_instance, only: [:show, :edit, :update, :destroy]
   helper_method :current_cart, :current_user, :logged_in?
 
@@ -7,6 +8,7 @@ class ApplicationController < ActionController::Base
     return unless session[:user_id]
     @current_user ||= User.find(session[:user_id])
   end
+
 
   def current_cart
     if session[:cart_id]
@@ -16,20 +18,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
   def logged_in?
     current_user != nil
   end
+
 
   def show; end
 
   def edit; end
 
-
   def cart
     session[:cart] ||= []
   end
-
-
 
   # private
   #

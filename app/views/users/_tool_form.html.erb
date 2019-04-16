@@ -2,12 +2,12 @@
 
 <div class="row">
   <div class="col-md-9 offset-md-3">
-    <%= form_for @instance, url: create_tool_path(@instance), action: create_tool_url, method: :post do |f| %>
+    <%= form_for @user, url: create_tool_path(@user), action: create_tool_url, method: :post do |f| %>
       <div class="form-group">
         <div class="control-label col-sm-2">
           <%= label_tag "Category" %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <%= f.collection_select :user_tools, Category.all, :id, :name, class: 'form-control' %>
         </div>
       </div>
@@ -16,10 +16,8 @@
         <div class="control-label col-sm-2">
           <%= label_tag "Name" %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <input type="text" name="tool[name]" id="tool_name" class="form-control" placeholder="give it a name">
-
-          <%#= f.text_field :cost, class: 'form-control', placeholder: 'price'%>
         </div>
       </div>
 
@@ -27,10 +25,8 @@
         <div class="control-label col-sm-2">
           <%= label_tag "Price" %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <input type="text" name="user_tool[cost]" id="user_tool[cost]" class="form-control" placeholder="price">
-
-          <%#= f.text_field :cost, class: 'form-control', placeholder: 'price'%>
         </div>
       </div>
 
@@ -38,22 +34,23 @@
         <div class="control-label col-sm-2">
           <%= label_tag "Image" %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <input type="text" name="user_tool[image]" id="user_tool[image]" class="form-control" placeholder="url">
         </div>
       </div>
+
       <div class="form-group">
         <div class="control-label col-sm-2">
           <%= label_tag 'Description' %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <textarea rows="3" name="user_tool[description]" id="user_tool[description]" class="form-control" placeholder="description"></textarea>
         </div>
       </div>
 
-      <%= f.submit class: 'btn btn-outline-primary' %>
+      <%= f.submit "Add tool", class: 'btn btn-outline-primary' %>
     <% end %>
-    <div class="col-md-4 offset-4">
+    <div class="col-md-6 offset-2">
       <%= link_to "Cancel", tools_path%>
     </div>
   </div>
