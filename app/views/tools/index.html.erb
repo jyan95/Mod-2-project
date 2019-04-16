@@ -4,6 +4,6 @@
 <% @all.each do |tool| %>
   <p>
     <%= link_to tool.name, tool_path(tool) %> -
-    <%= link_to tool.user.username, user_path(tool.user) %>
+    <%= link_to tool.category.name, category_path(tool.category) %>
   </p>
 <% end %>
