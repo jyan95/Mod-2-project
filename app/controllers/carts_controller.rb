@@ -9,7 +9,7 @@ class CartsController < ApplicationController
   end
 
   def index
-    @carts = Cart.where("user_id = #{current_user_id}")
+    @carts = Cart.where("user_id = #{session[:user_id]}")
   end
 
 
