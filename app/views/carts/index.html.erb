@@ -1,2 +1,12 @@
 <h1>Carts#index</h1>
 <p>Find me in app/views/carts/index.html.erb</p>
+
+<% @carts.each do |cart| %>
+  <ul>
+    <li>
+      Date: <%= link_to cart.updated_at, cart_path(cart) %>
+      Tools: <%= cart.tools %>
+      Subtotal: <%= cart.total %>
+    </li>
+  </ul>
+<% end %>

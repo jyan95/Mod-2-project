@@ -3,17 +3,25 @@ class Cart < ApplicationRecord
   has_many :cart_tools
   has_many :user_tools, through: :cart_tools
 
-  def total
-    @total
+  def set_total
+    total = self.costs.reduce(:+)
+    # byebug
+    self.update(total: total)
   end
 
-  def total=(total)
-
+  def checkout
+   self.update(complete: true)
   end
 
   def tools
-    self.user_tools.each do |ut|
-      
-    end
+    user_tools.map{|ut| ut.tool}
+  end
+
+  def costs
+    user_tools.map{|ut| ut.cost}
+  end
+
+  def counterparties
+    user_tools.map{|ut| ut.user}
   end
 end

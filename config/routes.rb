@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
+
+  # add to cart feature and user specific cart views
   get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
+  get '/cart/:id', to: 'carts#show', as: 'cart'
+  get '/users/:id/carts', to: 'carts#index', as: 'carts'
 
 
   # Create new tool by the user routes
@@ -16,6 +20,8 @@ Rails.application.routes.draw do
   get '/user/:id/edit-tool', to: 'users#edit_tool'
   patch '/user/:id', to: 'users#update_tool'
 
+  # view user specific tool
+  get '/user-tool/:id', to: 'users#user_tool', as: "user_tool"
   # get 'carts/index'
   # get 'carts/show'
   # get 'carts/edit'
@@ -32,6 +38,5 @@ Rails.application.routes.draw do
   resources :users, except: :index
   resources :categories, only: [:index, :show]
   resources :tools, only: [:index, :show]
-  resources :carts
 
 end

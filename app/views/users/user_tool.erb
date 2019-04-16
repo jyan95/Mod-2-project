@@ -1,0 +1,12 @@
+<ul>
+  <li>
+    <p>
+      <%= link_to @instance.user.username, user_path(@instance.user) %>
+      <%= link_to @instance.tool.name, tool_path(@instance.tool) %>
+      <%= @instance.cost %>
+    </p>
+    <p>
+      Description: <%= @instance.description %>
+    </p>
+  </li>
+</ul>

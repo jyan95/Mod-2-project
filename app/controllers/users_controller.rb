@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     redirect_to tools_path
   end
 
+  def user_tool
+    @instance = UserTool.find(params[:id])
+  end
+
   private
 
   def get_instance

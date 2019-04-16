@@ -1,4 +1,10 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h2>Carts#show</h2>
+<h2><%= @instance.updated_at %></h2>
 
-<p><%= @instance.user %></p>
+<% @instance.user_tools.each do |ut| %>
+<h3>Tools:</h3>
+<br>
+<p><%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %></p>
+<% end %>
+<br>
+<p>Subtotal: $<%= @instance.total %></p>
