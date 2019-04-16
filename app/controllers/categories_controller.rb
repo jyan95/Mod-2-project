@@ -3,4 +3,9 @@ class CategoriesController < ApplicationController
     @all = Category.all
   end
 
+  private
+
+  def get_instance
+    @instance = Category.find(params[:id])
+  end
 end
