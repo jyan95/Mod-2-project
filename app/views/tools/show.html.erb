@@ -5,10 +5,11 @@
 <p>
   Currently offered by:
   <ul>
-    <% @instance.users.each do |user| %>
+    <% @instance.user_tools.each do |ut| %>
       <li>
-        <%= link_to user.username, user_path(user) %> -
-        <%= link_to "Add to Cart",  %>
+        <%= link_to ut.user.username, user_path(ut.user) %>
+        for $<%= ut.cost %> / day
+        <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:ut.id,cart_id:@cart.id})%>
       </li>
     <% end %>
   </ul>
