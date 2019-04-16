@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_225956) do
 
   create_table "cart_tools", force: :cascade do |t|
     t.integer "cart_id"
-    t.integer "user_tools_id"
+    t.integer "user_tool_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,8 +54,11 @@ ActiveRecord::Schema.define(version: 2019_04_13_225956) do
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password", null: false
-    t.string "name", null: false
-    t.string "phone"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.boolean "logged_in", default: false
+    t.string "phone_number"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

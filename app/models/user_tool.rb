@@ -1,5 +1,5 @@
 class UserTool < ApplicationRecord
   belongs_to :user
-  belongs_to :tool
+  has_many :tools
   has_many :cart_tools
 end

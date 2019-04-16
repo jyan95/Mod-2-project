@@ -1,2 +1,10 @@
 <h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h3>Category: <%= @instance.name %></h3>
+
+<% @instance.tools.each do |tool| %>
+<p>
+  <%= link_to tool.name, tool_path(tool) %> - 
+  <%= tool.description %>
+  <%= link_to tool.user_tool.user.username, user_path(tool.user_tool.user)%>
+</p>
+<% end %>

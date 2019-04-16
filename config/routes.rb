@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   get 'categories/show'
-  get '/about', to: 'welcome#about'
+  get '/about', to: 'welcome#about', as: 'about'
 
   # get 'carts/index'
   # get 'carts/show'
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   # get 'users/edit'
   # get 'users/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :edit, :update, :destroy, :new, :create]
+  resources :users, except: :index
+  resources :categories, only: [:index,:show]
+  resources :tools, only: [:edit,:index,:new,:show]
+  resources :carts
 
 end
