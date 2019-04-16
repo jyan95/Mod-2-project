@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.valid?
+    user = User.new(user_params)
+    if user.save
       redirect_to user
     else
       flash[:errors] = user.errors.full_messages

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_225956) do
+ActiveRecord::Schema.define(version: 2019_04_16_182448) do
 
   create_table "cart_tools", force: :cascade do |t|
     t.integer "cart_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_225956) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end

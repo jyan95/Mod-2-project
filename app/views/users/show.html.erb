@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-  </div>
-  <div class="col-xs-4">
-    <%= @instance.username %>
-  </div>
-  <div class="col-xs-8">
-    Name: <%= @instance.name %>
-  </div>
-  <div class="col-xs-8">
-    Phone: <%= @instance.phone %>
+    <div class="col-xs-4">
+      <%= @instance.username %>
+    </div>
+    <div class="col-xs-8">
+      Name: <%= @instance.first_name + ' ' + @instance.last_name %>
+    </div>
+    <div class="col-xs-8">
+      Phone: <%= @instance.phone_number %>
+    </div>
   </div>
 </div>
