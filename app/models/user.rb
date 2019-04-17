@@ -6,10 +6,11 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
   before_save { self.username = username.downcase }
+  before_save { self.first_name = first_name.downcase }
+  before_save { self.last_name = last_name.downcase }
 
   validates :username,
             presence: true,
-            # uniqness: true,
             length: { minimum: 5, maximum: 20 }
   validates :first_name,
             presence: true,
@@ -30,6 +31,7 @@ class User < ApplicationRecord
   def add_user_tool_params(user_tool_params, tool_params, category_id)
     user_tool = UserTool.new(user_tool_params)
     user_tool.user_id = id
+    user_tool.available = true
     tool = Tool.new(tool_params)
     tool.category_id = category_id[:user_tools]
     user_tool.tool_id = tool.id

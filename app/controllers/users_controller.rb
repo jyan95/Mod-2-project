@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
 
   before_action :find_user, only: [:show, :new_tool]
+
   def new
     @user = User.new
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      redirect_to user
+    @user = User.new(user_params)
+    if @user.save
+    byebug
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to the Tools sharing website #{@user.username}"
+      redirect_to root_path
     else
-      flash[:errors] = user.errors.full_messages
-      redirect_to new_user_path
+      render 'new'
     end
   end
 
@@ -39,6 +42,19 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Your account was updated successfully"
+      redirect_to articles_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy; end
+
   private
 
   def find_user
@@ -50,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :name, :phone)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :phone_number, :email)
   end
 
   def user_tool_params

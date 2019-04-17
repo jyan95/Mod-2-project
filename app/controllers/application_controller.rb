@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  before_action :get_instance, only: [:update, :destroy]
-  before_action :authorized #lock down this whole app
+  # before_action :get_instance, only: [:update, :destroy]
+  # before_action :authorized #lock down this whole app
   helper_method :current_cart
 
-  before_action :get_instance, only: [:show, :edit, :update, :destroy]
+  # before_action :get_instance, only: [:show, :edit, :update, :destroy]
   helper_method :current_cart, :current_user, :logged_in?
 
   def current_cart
