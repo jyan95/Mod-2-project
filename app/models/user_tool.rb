@@ -1,5 +1,9 @@
 class UserTool < ApplicationRecord
   belongs_to :user
-  has_many :tools
+  belongs_to :tool
   has_many :cart_tools
+
+  def in_use
+    self.available == false
+  end
 end

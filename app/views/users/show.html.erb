@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="row">
+  <!-- <div class="row"> -->
     <div class="col-xs-4">
-      <%= @instance.username %>
+      <%= @user.username %>
     </div>
     <div class="col-xs-8">
-      Name: <%= @instance.first_name + ' ' + @instance.last_name %>
+      Name: <%= @user.first_name + ' ' + @user.last_name %>
     </div>
     <div class="col-xs-8">
-      Phone: <%= @instance.phone_number %>
+      Phone: <%= @user.phone_number %>
     </div>
-  </div>
+    <div class="col-xs-8">
+      Inventory: <br><% @user.user_tools.each do |ut| %>
+      <%= link_to ut.tool.name, user_tool_path(ut) %><br>
+      <% end %>
+    </div>
+  <!-- </div> -->
 </div>

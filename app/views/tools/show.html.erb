@@ -1,15 +1,14 @@
-<h1>Tools#show</h1>
-<p>Find me in app/views/tools/show.html.erb</p>
+<h1><%= @instance.name %></h1>
 
-<p>Tool: <%= @instance.name %></p>
 <p>
-  Currently offered by:
+  Current Listings:
   <ul>
-    <% @instance.users.each do |user| %>
-      <li>
-        <%= link_to user.username, user_path(user) %> -
-        <%= link_to "Add to Cart",  %>
-      </li>
+    <% @instance.user_tools.each do |ut| %>
+      <p><%= ut.image %></p>
+      <p><%= ut.description %></p>
+      <%= link_to ut.user.username, user_path(ut.user) %>
+      @ $<%= ut.cost %> / day -
+      <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:ut.id,cart_id:@cart.id})%>
     <% end %>
   </ul>
 </p>

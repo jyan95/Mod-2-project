@@ -1,0 +1,12 @@
+<ul>
+    <p>
+      <%= link_to @instance.user.username, user_path(@instance.user) %>
+      <br>
+      <%= link_to @instance.tool.name, tool_path(@instance.tool) %> @ $<%= @instance.cost %>/ day
+      <br>
+      Description: <%= @instance.description %>
+    </p>
+    <p>
+      <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:@instance.id,cart_id:@cart.id})%>
+    </p>
+</ul>
