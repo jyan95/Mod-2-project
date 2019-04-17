@@ -1,34 +1,37 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  before_action :get_instance, only: [:update, :destroy]
+  before_action :authorized #lock down this whole app
+  helper_method :current_cart
 
   before_action :get_instance, only: [:show, :edit, :update, :destroy]
   helper_method :current_user, :logged_in?
-
-  def current_user
-    return unless session[:user_id]
-    @current_user ||= User.find(session[:user_id])
-  end
-  # 
-  # def current_user_id
-  #   @current_user.id
-  # end
 
   def current_cart
     @current_cart = Cart.where(user_id: session[:user_id]).where(complete:false)
   end
 
-  def logged_in?
-    current_user != nil
-  end
-
-
   def show; end
 
   def edit; end
 
-  # private
-  #
-  # def get_instance
-  #   @instance = self.class.find(params[:id])
-  # end
+  def cart
+    session[:cart] ||= []
+  end
+
+  def current_user
+    # User.find would throw an error if we cannot find the user
+    User.find_by({ id: session[:user_id] })
+  end
+
+  def logged_in?
+    # nil is falsey in ruby
+    # a user instance is truthy
+    !!current_user
+  end
+
+  def authorized
+    redirect_to login_path unless logged_in?
+  end
+
 end
