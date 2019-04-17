@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :find_user, only: [:show, :new_tool]
 
   def new
@@ -40,20 +39,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show; end
-
-  def edit; end
-
-  def update
-    if @user.update(user_params)
-      flash[:success] = "Your account was updated successfully"
-      redirect_to articles_path
-    else
-      render 'edit'
-    end
+  def user_tool
+    @instance = UserTool.find(params[:id])
+    @cart = current_cart
   end
 
-  def destroy; end
+  def show; end
 
   private
 

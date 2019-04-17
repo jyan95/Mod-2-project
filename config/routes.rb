@@ -5,7 +5,14 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
-  get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
+
+  # cart feature and user specific cart views
+  get '/tools/:id/add-tool', to: 'carts#add', as: 'add'
+  get '/carts/:id', to: 'carts#show', as: 'cart'
+  get '/carts', to: 'carts#index', as: 'carts'
+  get '/carts', to: 'carts#checkout', as: 'checkout'
+  # delete '', to: 'carts#remove_item', as: 'remove'
+
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
@@ -15,8 +22,11 @@ Rails.application.routes.draw do
   get '/user/:id/edit-tool', to: 'users#edit_tool'
   patch '/user/:id', to: 'users#update_tool'
 
+  # view user specific tools
+  get '/user-tools/:id', to: 'users#user_tool', as: "user_tool"
+
   # Login and logout routes
-  get '/login', to: 'sessions#new', as: 'login'
+  get '/signup', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 

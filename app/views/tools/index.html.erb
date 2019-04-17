@@ -1,5 +1,9 @@
-<h1>Tools#index</h1>
+<h1>Available Tools:</h1>
 <p>Find me in app/views/tools/index.html.erb</p>
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
 
 <% @all.each do |tool| %>
   <p>
