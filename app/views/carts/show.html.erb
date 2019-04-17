@@ -1,10 +1,17 @@
-<h2>Carts#show</h2>
-<h2><%= @instance.updated_at %></h2>
+<h2>Order Date: <%= @instance.formatted_date %></h2>
 
 <% @instance.user_tools.each do |ut| %>
-<h3>Tools:</h3>
 <br>
-<p><%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %></p>
+<p>
+  <%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %>
+  <% if @instance.complete == false %>
+  <%= link_to "Remove From Cart" %>
+  <% end %>
+</p>
 <% end %>
 <br>
-<p>Subtotal: $<%= @instance.total %></p>
+<p>Subtotal: $<%= @instance.total %>
+  <% if @instance.complete == false %>
+  <%= link_to "Checkout" , checkout_path%>
+  <% end %>
+</p>

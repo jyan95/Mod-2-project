@@ -1,11 +1,19 @@
-<h1>Carts#index</h1>
+<h1>Your Past Orders</h1>
 <p>Find me in app/views/carts/index.html.erb</p>
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
 
 <% @carts.each do |cart| %>
   <ul>
     <li>
-      Date: <%= link_to cart.updated_at, cart_path(cart) %>
-      Tools: <%= cart.tools %>
+      <%= link_to cart.formatted_date, cart_path(cart) %>
+      <br>
+      Tools: <% cart.tools.each do |t| %>
+      <%= t.name %>
+      <% end %>
+      <br>
       Subtotal: <%= cart.total %>
     </li>
   </ul>

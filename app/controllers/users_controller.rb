@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :get_instance, only: [:show]
   before_action :find_user, only: [:show, :new_tool]
 
   def new
@@ -38,9 +37,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   def user_tool
     @instance = UserTool.find(params[:id])
+    @cart = current_cart
   end
 
   def show; end
