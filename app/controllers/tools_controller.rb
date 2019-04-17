@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-
+  before_action :get_instance, only: [:show]
   # before_action :find_user, only: [:create, :update]
 
   def index
@@ -7,8 +7,7 @@ class ToolsController < ApplicationController
   end
 
   def show
-    user = User.find(61) # for testing
-    @cart = Cart.create(user_id: user.id)
+    @cart = Cart.create(user_id: 61) # for testing
     # user = current_user
     # @cart = Cart.find_by(user_id: user.id)
   end
@@ -19,7 +18,7 @@ class ToolsController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     # user = User.find(params[:id])
     tool = Tool.new(tool_params)
     tool.add_user_tool_params(user_tool_params)

@@ -1,21 +1,15 @@
 class CartsController < ApplicationController
 
-
-  def create
+  def add
     @cart = CartTool.new(cart_params)
-    @cart.save
+    # @cart.save
     session[:cart_id] = @cart.id
     redirect_to tools_path
   end
 
   def index
-    @carts = Cart.where("user_id = #{session[:user_id]}")
-  end
-
-
-
-  def current
-    # @
+    user = current_user
+    @carts = Cart.where("user_id = #{user.id}")
   end
 
   # def edit

@@ -11,6 +11,7 @@ class Cart < ApplicationRecord
 
   def checkout
    self.update(complete: true)
+   self.save
   end
 
   def tools

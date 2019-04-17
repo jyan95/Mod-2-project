@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :get_instance, only: [:show]
   before_action :find_user, only: [:show, :new_tool]
+
   def new
     @user = User.new
   end
@@ -37,13 +38,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-<<<<<<< HEAD
+
   def user_tool
     @instance = UserTool.find(params[:id])
   end
-=======
+
   def show; end
->>>>>>> 6380033fe63b88bddd8faddad3ddef8e3ec8dc96
+
 
   private
 
