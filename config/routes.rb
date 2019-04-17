@@ -8,13 +8,13 @@ Rails.application.routes.draw do
 
   # cart feature and user specific cart views
   get '/tools/:id/add-tool', to: 'carts#add', as: 'add'
+  post '/remove-tool', to: 'carts#remove', as: 'remove'
   get '/carts', to: 'carts#index', as: 'carts'
   get '/carts/:id', to: 'carts#show', as: 'cart'
   patch '/checkout', to: 'carts#checkout'
-  # delete '', to: 'carts#remove_item', as: 'remove'
 
   # User
-  get '/users/:id/'
+  # get '/users/:id/', to: 'users#show', as: 'user'
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   # Sign up routes
   get '/signup', to: 'users#new', as: 'signup'
 
-  get '/tools/:category', to: 'category#'
+  # get '/tools/:category', to: 'category#'
 
   # resources :users, except: :index
   resources :categories, only: [:index, :show]
