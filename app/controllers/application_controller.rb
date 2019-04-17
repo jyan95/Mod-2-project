@@ -1,16 +1,12 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  # before_action :get_instance, only: [:update, :destroy]
-  # before_action :authorized #lock down this whole app
-  # before_action :get_instance, only: [:show, :edit, :update, :destroy]
   helper_method :current_user, :current_cart, :logged_in?
 
-  before_action :get_instance, only: [:show, :edit, :update, :destroy]
-  helper_method :current_cart, :current_user, :logged_in?
-
   def current_cart
-    Cart.find_by({user_id:61})
-    # Cart.find_by({user_id: session[:user_id]})
+    if logged_in?
+      user = current_user
+      @current_cart = Cart.find_by(user_id: user.id, complete: false)
+    end
   end
 
   def show; end

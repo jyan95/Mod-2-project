@@ -2,28 +2,29 @@ class CartsController < ApplicationController
   before_action :get_cart, only: [:show,:checkout]
 
   def add
-    @cart = CartTool.new(cart_params)
+    @cart_tool = CartTool.new(cart_params)
     # @cart.save
-    session[:cart_id] = @cart.id
+    @cart_tool.cart.set_total
+    session[:cart_id] = @cart_tool.id
     flash[:notice] = "Successfully added to cart"
     redirect_to tools_path
   end
 
   def index
-    @carts = Cart.where(user_id: 61).where(complete: true) # for testing
-    # user = current_user
-    # @carts = Cart.where("user_id = #{user.id}").where(complete: true)
+    # @carts = Cart.where(user_id: 61).where(complete: true) # for testing
+    user = current_user
+    @carts = Cart.where(user_id: user.id, complete: true)
   end
 
   def show
-    @instance.set_total
+    # @instance.set_total
   end
 
   def checkout
     @instance.checkout
     @instance.user_tools.each{|ut| ut.in_use}
     flash[:notice] = "Your Order Has Been Placed!"
-    current_cart = Cart.new
+    # current_cart = Cart.new
     redirect_to carts_path
   end
 
@@ -45,6 +46,6 @@ class CartsController < ApplicationController
 
   def get_cart
     user = current_user
-    @instance = Cart.where(user_id: user.id).where(complete: false)
+    @instance = Cart.find_by(user_id: user.id, complete: false)
   end
 end

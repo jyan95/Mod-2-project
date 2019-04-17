@@ -8,11 +8,13 @@ Rails.application.routes.draw do
 
   # cart feature and user specific cart views
   get '/tools/:id/add-tool', to: 'carts#add', as: 'add'
-  get '/carts/:id', to: 'carts#show', as: 'cart'
   get '/carts', to: 'carts#index', as: 'carts'
-  get '/carts', to: 'carts#checkout', as: 'checkout'
+  get '/carts/:id', to: 'carts#show', as: 'cart'
+  patch '/checkout', to: 'carts#checkout'
   # delete '', to: 'carts#remove_item', as: 'remove'
 
+  # User
+  get '/users/:id/'
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
@@ -26,29 +28,14 @@ Rails.application.routes.draw do
   get '/user-tools/:id', to: 'users#user_tool', as: "user_tool"
 
   # Login and logout routes
-  get '/signup', to: 'sessions#new', as: 'login'
+  get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   # Sign up routes
   get '/signup', to: 'users#new', as: 'signup'
 
-
-
-
-
-  # get 'carts/index'
-  # get 'carts/show'
-  # get 'carts/edit'
-  # get 'carts/new'
-  # get 'tools/index'
-  # get 'tools/show'
-  # get 'tools/edit'
-  # get 'tools/new'
-  # get 'users/show'
-  # get 'users/edit'
-  # get 'users/new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/tools/:category', to: 'category#'
 
   # resources :users, except: :index
   resources :categories, only: [:index, :show]

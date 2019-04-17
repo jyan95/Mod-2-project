@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :new_tool]
+  before_action :find_user, only: [:update, :show, :new_tool]
 
   def new
     @user = User.new
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-    byebug
+      @current_cart = Cart.create(user_id: @user.id)
       session[:user_id] = @user.id
       flash[:success] = "Welcome to the Tools sharing website #{@user.username}"
       redirect_to root_path
@@ -40,11 +40,28 @@ class UsersController < ApplicationController
   end
 
   def user_tool
-    @instance = UserTool.find(params[:id])
-    @cart = current_cart
+    user = current_user
+    if user.user_tools.length > 0
+      @instance = UserTool.find(params[:id])
+      @cart = current_cart
+    else
+      flash[:danger] = "You have no tools"
+      redirect_to user
+    end
   end
 
   def show; end
+
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Your account was successfully updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
 
   private
 

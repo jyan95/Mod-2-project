@@ -7,9 +7,9 @@ class ToolsController < ApplicationController
   end
 
   def show
-    @cart = Cart.create(user_id: 61) # for testing
-    # user = current_user
-    # @cart = Cart.find_by(user_id: user.id)
+    # @cart = Cart.create(user_id: 61) # for testing
+    @user = current_user
+    @cart = Cart.find_by(user_id: @user.id)
   end
 
   def new

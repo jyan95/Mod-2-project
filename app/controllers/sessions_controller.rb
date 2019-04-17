@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   def login #handles the POST request to /login
     # find out if we have a user with this username
     @user = User.find_by(username: params[:session][:username])
+    @current_cart = Cart.find_by(user_id: @user.id, complete: false)
     # get that user record from DB
     # authenticate this user; determine if they provided the correct pw
     if @user && @user.authenticate(params[:session][:password])

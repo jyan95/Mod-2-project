@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :carts
-  has_many :user_tools
-  has_many :tools, through: :user_tools
+  has_many :carts, dependent: :destroy
+  has_many :user_tools, dependent: :destroy
+  has_many :tools, through: :user_tools, dependent: :destroy
 
   before_save { self.email = email.downcase }
   before_save { self.username = username.downcase }
@@ -37,5 +37,11 @@ class User < ApplicationRecord
     user_tool.tool_id = tool.id
     tool.save
     user_tool.save
+    Cart.create(user_id: id)
   end
+
+  def edit_user(params)
+
+  end
+
 end
