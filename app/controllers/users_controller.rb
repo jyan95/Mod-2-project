@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:update, :show, :new_tool]
+  before_action :find_user, only: [:edit, :update, :show, :new_tool]
 
   def new
     @user = User.new
@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
+    byebug
     if @user.update(user_params)
       flash[:success] = "Your account was successfully updated"
       redirect_to @user
@@ -84,4 +85,8 @@ class UsersController < ApplicationController
   def category_id
     params.require(:user).permit(:user_tools)
   end
+
+
+
+
 end

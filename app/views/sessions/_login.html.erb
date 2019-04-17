@@ -1,5 +1,7 @@
 <h1 align="center">Log in</h1>
 
+<%= render 'layouts/messages' %>
+
 <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
   <div class="form-group">
     <div class="control-label col-sm-2">

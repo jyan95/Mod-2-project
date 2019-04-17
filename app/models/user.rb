@@ -11,15 +11,16 @@ class User < ApplicationRecord
 
   validates :username,
             presence: true,
+            uniqueness: true,
             length: { minimum: 5, maximum: 20 }
   validates :first_name,
             presence: true,
-            length: {minimum: 5, maximum: 20}
+            length: {minimum: 2, maximum: 20}
   validates :last_name,
             presence: true,
-            length: {minimum: 5, maximum: 20}
+            length: {minimum: 2, maximum: 20}
   validates :phone_number,
-            presence: true,
+            numericality: true,
             length: {minimum: 6, maximum: 10}
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email,
@@ -41,7 +42,11 @@ class User < ApplicationRecord
   end
 
   def edit_user(params)
+    params.each
+  end
 
+  def name
+    first_name.capitalize + ' ' + last_name.capitalize
   end
 
 end

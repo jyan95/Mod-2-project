@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     # session.delete(:user_id)
     session[:user_id] = nil
     flash[:notice] = 'u logged out'
-    redirect_to login_path
+    redirect_to root_path
   end
 
   # def index

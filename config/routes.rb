@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   # delete '', to: 'carts#remove_item', as: 'remove'
 
   # User
-  get '/users/:id/'
+  get '/user/:id/edit', to: 'users#edit', as: 'edit_user'
+  patch '/edit_user', to: 'users#update'
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
@@ -35,12 +36,12 @@ Rails.application.routes.draw do
   # Sign up routes
   get '/signup', to: 'users#new', as: 'signup'
 
-  get '/tools/:category', to: 'category#'
+  get '/tools/:category', to: 'category#index'
 
   # resources :users, except: :index
   resources :categories, only: [:index, :show]
   resources :tools, only: [:index, :show]
-  resources :carts
+  # resources :carts
   resources :users, except: [:new]
 
 end
