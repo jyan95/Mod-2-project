@@ -3,5 +3,6 @@ class WelcomeController < ApplicationController
   end
 
   def home
+    render 'home'
   end
 end

@@ -1,20 +1,20 @@
-<h1>Your Past Orders</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
 
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
+<div class="container">
+  <%= render 'layouts/messages' %>
 
-<% @carts.each do |cart| %>
-  <ul>
-    <li>
-      <%= link_to cart.formatted_date, cart_path(cart) %>
-      <br>
-      Tools: <% cart.tools.each do |t| %>
-      <%= t.name %>
-      <% end %>
-      <br>
-      Subtotal: <%= cart.total %>
-    </li>
-  </ul>
-<% end %>
+
+  <% @carts.each do |cart| %>
+    <ul>
+      <li>
+        <%= link_to cart.formatted_date, cart_path(cart) %>
+        <br>
+        Tools: <% cart.tools.each do |t| %>
+          <%= t.name %>
+        <% end %>
+        <br>
+        Subtotal: <%= cart.total %>
+      </li>
+    </ul>
+  <% end %>
+
+</div>

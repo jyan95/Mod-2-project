@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def current_cart
     if logged_in?
       user = current_user
-      @current_cart = Cart.find_by(user_id: user.id, complete: false)
+      @current_cart = Cart.find_or_create_by(user_id: user.id, complete: false)
     end
   end
 

@@ -1,0 +1,5 @@
+<h1>Your Tools</h1>
+
+<% @usertools.each do |ut| %>
+  <p><%= link_to ut.tool.name, user_tool_path(ut) %></p>
+<% end %>

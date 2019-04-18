@@ -1,39 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <div class="row">
-        <div class="col-md-12">
-          <ul>
-            <p><%= @user.username %></p>
-            <p>Name: <%= @user.name %></p>
-            <p>Phone: <%= @user.phone_number %></p>
-          </ul>
-        </div>
-        <div class="col-md-10 offset-1">
-          <%= link_to 'Add Tool', new_tool_path(@user), class: 'btn btn-danger' %>
-        </div>
+    <div class="col-md-4 col-sm-4">
+      <ul id="user-page" class="list-group list-group-flush">
+        <li class="list-group-item">Username: <%= @user.username %></li>
+        <li class="list-group-item">Name: <%= @user.name %></li>
+        <li class="list-group-item">Phone: <%= @user.phone_number %></li>
+        <li class="list-group-item">Email: <%= @user.email %></li>
+      </ul>
+
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+
+<!--        <button type="button" class="btn btn-secondary">Right</button>-->
+
+          <%= link_to 'Add Tool', new_tool_path(@user), class: 'btn btn-secondary btn-sm' %>
+          <% if current_user == @user %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-secondary btn-sm' %>
+            <%= link_to 'Delete Account', delete_account_path(current_user), method: :delete, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+
       </div>
-      <div class="row"></div>
     </div>
     <div class="col-md-8">
-      <%= @user.user_tools.each do |tool| %>
-        <div class="row">
+      <% @user.user_tools.map do |tool| %>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
             <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-                <img src="<%= tool.image %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Text.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+              <a href="<%= tool_path(tool) %>"><img src="<%= tool.image %>" class="card-img" alt="..."></a>
             </div>
-
-            <div class="col-md-4">
-
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= tool.tool.name %></h5>
+                <p class="card-text"><%= tool.description %></p>
+                <p class="card-text">$<small class="text-muted"><%= tool.cost %></small></p>
+              </div>
             </div>
           </div>
         </div>
       <% end %>
+    </div>
   </div>
 </div>

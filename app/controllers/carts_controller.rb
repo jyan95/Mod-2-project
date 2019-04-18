@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   before_action :get_cart, only: [:show,:checkout]
 
   def add
-    @cart_tool = CartTool.create(cart_params)
+    @cart_tool = CartTool.find_or_create_by(cart_params)
     @cart_tool.cart.set_total
     session[:cart_id] = @cart_tool.id
     flash[:notice] = "Successfully added to cart"
@@ -22,14 +22,14 @@ class CartsController < ApplicationController
   end
 
   def show
-    @instance.set_total
+    @cart = Cart.find(params[:id])
+    @cart.set_total
   end
 
   def checkout
-    @instance.checkout
     @instance.user_tools.each{|ut| ut.in_use}
-    flash[:notice] = "Your Order Has Been Placed!"
-    # current_cart = Cart.new
+    @instance.checkout
+    flash[:success] = "Your Order Has Been Placed!"
     redirect_to carts_path
   end
 
