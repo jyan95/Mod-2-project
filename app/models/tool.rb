@@ -5,6 +5,10 @@ class Tool < ApplicationRecord
 
   validates :name, presence: true, length: {minimum: 4, maximum: 30}
 
+  def get_image
+    user_tool.last.image
+  end
+
   def user_tool
     user = current_user
     # UserTool.where(tool_id: id).where(user_id: user.id)

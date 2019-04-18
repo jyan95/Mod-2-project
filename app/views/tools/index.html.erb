@@ -1,13 +1,37 @@
-<h1>Available Tools:</h1>
-<p>Find me in app/views/tools/index.html.erb</p>
 
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
+<div class="container">
+  <%= render 'layouts/messages' %>
+  <div class="row">
+    <div class="col-md-3 col-sm-3">
+      <h2>Categories:</h2>
+      <% Category.all.each do |category| %>
+        <li><%= link_to category.name, category %></li>
+      <% end %>
+    </div>
+    <div class="col-md-9 col-sm-9">
+      <div class="row">
+        <div class="card-deck">
 
-<% @all.each do |tool| %>
-  <p>
-    <%= link_to tool.name, tool_path(tool) %> -
-    <%= link_to tool.category.name, category_path(tool.category) %>
-  </p>
-<% end %>
+          <% @all.each do |tool| %>
+            <% tool.user_tools.each do |ut| %>
+              <% if ut.available %>
+                <div class="col-sm-4">
+                    <div class="card w-100 h-100">
+                      <a href="<%= user_tool_path(ut) %>"><img src="<%= ut.image %>" class="card-img-top" alt="..."></a>
+                      <div class="card-body">
+                        <h5 class="card-title"><%= ut.tool.name.capitalize %></h5>
+                        <p class="card-text"><%= ut.description %></p>
+                        <p class="card-text">$<%= ut.cost %></p>
+
+                      </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <%end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

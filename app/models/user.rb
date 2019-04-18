@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :username,
             presence: true,
             uniqueness: true,
-            length: { minimum: 5, maximum: 20 }
+            length: { minimum: 4, maximum: 20 }
   validates :first_name,
             presence: true,
             length: {minimum: 2, maximum: 20}
@@ -30,8 +30,6 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }
 
   def add_user_tool_params(user_tool_params, tool_params, category_id)
-    # Cart.create(user_id: id)
-    byebug
     user_tool = UserTool.new(user_tool_params)
     user_tool.user_id = id
     user_tool.available = true

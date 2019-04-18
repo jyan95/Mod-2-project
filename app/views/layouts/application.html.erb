@@ -8,15 +8,17 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
   
     <%= render 'layouts/navigation' %>
-    <%#= render 'layouts/messages' %>
-    <div class="container">
-      <%= yield %>
-      <img src="../architecture-1079806_1920.jpg" alt="">
-    </div>
+    <%# unless root_path %>
+      <%#= render home %>
+    <%# else %>
+<!--      <div class="main-container">-->
+        <%= yield %>
+<!--      </div>-->
+    <%# end %>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

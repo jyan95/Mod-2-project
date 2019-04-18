@@ -5,12 +5,12 @@ class Cart < ApplicationRecord
 
   def set_total
     total = self.costs.reduce(:+)
-    # byebug
     self.update(total: total)
   end
 
   def checkout
-   self.update(complete: true)
+    self.update(complete: true)
+    Cart.find_or_create_by(complete: false)
   end
 
   def tools

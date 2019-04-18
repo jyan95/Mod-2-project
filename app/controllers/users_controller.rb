@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:edit, :update, :show, :new_tool]
+  before_action :find_user, only: [:destroy, :edit, :update, :show, :new_tool]
 
   def new
     @user = User.new
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user.add_user_tool_params(user_tool_params, tool_params, category_id)
       flash[:success] = "Successfully added new tool"
-      redirect_to tools_path
+      redirect_to user
     else
       flash[:errors] = user.errors.full_messages
       redirect_to new_tool_path
@@ -40,18 +40,19 @@ class UsersController < ApplicationController
   end
 
   def user_tool
-    user = current_user
-    if user.user_tools.length > 0
-      @instance = UserTool.find(params[:id])
-      @cart = current_cart
-    else
-      flash[:danger] = "You have no tools"
-      redirect_to user
-    end
+      @user = current_user
+      if @user.user_tools.length > 0
+        @usertool = UserTool.find(params[:id])
+        @cart = current_cart
+      else
+        flash[:danger] = "You have no tools"
+        redirect_to @user
+      end
   end
 
   def user_tools
-    current_user
+    user = current_user
+    @usertools = UserTool.where(user_id: user.id)
   end
 
   def show; end
@@ -59,13 +60,17 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    byebug
     if @user.update(user_params)
       flash[:success] = "Your account was successfully updated"
       redirect_to @user
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path
   end
 
   private

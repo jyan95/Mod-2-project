@@ -1,8 +1,30 @@
-<h1>Categories#show</h1>
-<h3>Category: <%= @instance.name %></h3>
+<div class="container">
 
-<% @instance.tools.each do |tool| %>
-<p>
-  <%= link_to tool.name, tool_path(tool) %> 
-</p>
-<% end %>
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-3 col-sm-3">
+        <h3>Categories:</h3>
+        <% Category.all.each do |category| %>
+          <li><%= link_to category.name, category %></li>
+        <% end %>
+      </div>
+      <div class="col-md-9 col-sm-9">
+        <div class="row">
+          <h1> <%= @category.name %></h1>
+          <div class="card-deck">
+            <% @category.tools.each do |tool| %>
+                  <div class="col-sm-4">
+                    <div class="card w-100 h-100">
+                      <a href="<%= tool_path(tool) %>"><img src="<%#= tool.get_image  %>" class="card-img-top" alt="..."></a>
+                      <div class="card-body">
+                        <h5 class="card-title"><%= tool.name.capitalize %></h5>
+                      </div>
+                    </div>
+                  </div>
+            <%end %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+

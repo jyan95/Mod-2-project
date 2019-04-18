@@ -8,6 +8,6 @@ class CategoriesController < ApplicationController
   private
 
   def get_instance
-    @instance = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 end

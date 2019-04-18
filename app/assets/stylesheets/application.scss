@@ -10,9 +10,76 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree
+ *= require_tree,
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+//.main-container {
+//  width: 75vw;
+//  margin: auto;
+//}
+
+#btn-move-down {
+  margin: 10px 0;
+  position: relative;
+  float: left;
+}
+
+ul li a.btn.btn-warning {
+  margin-left: 15px;
+}
+
+footer.footer a {
+  color: #000000;
+  transition: color .7s;
+  text-decoration: none;
+}
+//
+//footer.footer a:hover {
+//  color: green;
+//}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 5px solid #eaeaea;
+  color: #777;
+}
+
+footer a:hover {
+  color: green;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+#user-page {
+  color: #000;
+}
+
+.container .footer {
+  //color: #ffffff;
+}
+
+.home-wrapper {
+  background-image: url(/assets/rootpage.jpg);
+  width: 100px;
+  //background-size: auto;
+}
+
+.row .card-deck .col-sm-4 {
+  margin-bottom: 15px;
+}
