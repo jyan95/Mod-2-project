@@ -2,12 +2,17 @@ class CartsController < ApplicationController
   before_action :get_cart, only: [:show,:checkout]
 
   def add
-    @cart_tool = CartTool.new(cart_params)
-    # @cart.save
+    @cart_tool = CartTool.create(cart_params)
     @cart_tool.cart.set_total
     session[:cart_id] = @cart_tool.id
     flash[:notice] = "Successfully added to cart"
     redirect_to tools_path
+  end
+
+  def remove
+    cart_tool = CartTool.find_by(cart_params)
+    cart_tool.destroy
+    redirect_to cart_path(current_cart)
   end
 
   def index
@@ -28,10 +33,6 @@ class CartsController < ApplicationController
     redirect_to carts_path
   end
 
-  def remove_item
-
-  end
-
   # def edit
   # end
 
@@ -45,6 +46,7 @@ class CartsController < ApplicationController
   end
 
   def get_cart
+    # @instance = Cart.find_by(user_id: 61, complete: false)
     user = current_user
     @instance = Cart.find_by(user_id: user.id, complete: false)
   end

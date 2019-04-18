@@ -7,7 +7,7 @@ class Tool < ApplicationRecord
 
   def user_tool
     user = current_user
-    UserTool.where(tool_id: self.id).where(user_id: user.id)
+    # UserTool.where(tool_id: id).where(user_id: user.id)
+    UserTool.find_by(tool_id: id, user_id: user.id)
   end
-
 end

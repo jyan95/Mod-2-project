@@ -20,7 +20,7 @@ class User < ApplicationRecord
             presence: true,
             length: {minimum: 2, maximum: 20}
   validates :phone_number,
-            numericality: true,
+            # numericality: true,
             length: {minimum: 6, maximum: 10}
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email,
@@ -30,15 +30,16 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }
 
   def add_user_tool_params(user_tool_params, tool_params, category_id)
+    # Cart.create(user_id: id)
+    byebug
     user_tool = UserTool.new(user_tool_params)
     user_tool.user_id = id
     user_tool.available = true
     tool = Tool.new(tool_params)
     tool.category_id = category_id[:user_tools]
-    user_tool.tool_id = tool.id
     tool.save
+    user_tool.tool_id = tool.id
     user_tool.save
-    Cart.create(user_id: id)
   end
 
   def edit_user(params)

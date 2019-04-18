@@ -5,7 +5,7 @@
 <p>
   <%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %>
   <% unless @instance.complete %>
-  <%=  link_to "Remove From Cart"  %>
+  <%= link_to "Remove From Cart", remove_path(cart_tool:{user_tool_id:ut.id, cart_id:@instance.id}), method: :delete  %>
   <% end %>
 </p>
 <% end %>
