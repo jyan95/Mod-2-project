@@ -1,17 +1,18 @@
-<h2>Order Date: <%= @instance.formatted_date %></h2>
+<h2><%= @instance.formatted_date %></h2>
 
 <% @instance.user_tools.each do |ut| %>
 <br>
 <p>
   <%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %>
   <% unless @instance.complete %>
-  <%= link_to "Remove From Cart", remove_path(cart_tool:{user_tool_id:ut.id, cart_id:@instance.id}), method: :delete  %>
+  <%= link_to "Remove", remove_path(cart_tool:{user_tool_id:ut.id, cart_id:@instance.id}), method: :post %>
   <% end %>
 </p>
 <% end %>
 <br>
 <p>Subtotal: $<%= @instance.total %>
   <% if !@instance.complete && @instance.user_tools.length > 0 %>
-  <%=  link_to "Checkout" , checkout_path %>
+  <br>
+  <%=  link_to "Checkout" , checkout_path, class: 'btn btn-warning' %>
   <% end %>
 </p>

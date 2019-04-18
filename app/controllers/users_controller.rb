@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:edit, :update, :show, :new_tool, :create_tool]
+  before_action :find_user, only: [:edit, :update, :show, :new_tool]
 
   def new
     @user = User.new
@@ -25,11 +25,12 @@ class UsersController < ApplicationController
   end
 
   def create_tool
-    if @user.add_user_tool_params(user_tool_params, tool_params, category_id)
+    user = User.find(params[:id])
+    if user.add_user_tool_params(user_tool_params, tool_params, category_id)
       flash[:success] = "Successfully added new tool"
       redirect_to tools_path
     else
-      flash[:errors] = @user.errors.full_messages
+      flash[:errors] = user.errors.full_messages
       redirect_to new_tool_path
     end
   end
@@ -49,9 +50,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @tools = @user.user_tools
+  def user_tools
+    current_user
   end
+
+  def show; end
 
   def edit; end
 
@@ -86,5 +89,8 @@ class UsersController < ApplicationController
   def category_id
     params.require(:user).permit(:user_tools)
   end
+
+
+
 
 end

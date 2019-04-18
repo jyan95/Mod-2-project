@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # view user specific tools
   get '/user-tools/:id', to: 'users#user_tool', as: "user_tool"
+  get '/user-tools', to: 'users#user_tools', as: 'user_tools'
 
   # Login and logout routes
   get '/login', to: 'sessions#new', as: 'login'

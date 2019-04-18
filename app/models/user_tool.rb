@@ -6,4 +6,12 @@ class UserTool < ApplicationRecord
   def in_use
     self.available == false
   end
+
+  def tool_name
+    self.tool.name.capitalize
+  end
+
+  def username
+    self.user.username
+  end
 end
