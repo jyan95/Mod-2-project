@@ -4,11 +4,15 @@
   Current Listings:
   <ul>
     <% @instance.user_tools.each do |ut| %>
-      <p><%= ut.image %></p>
+      <% if ut.image %>
+      <p><%= image_tag ut.image %></p>
+      <% end %>
       <p><%= ut.description %></p>
       <%= link_to ut.user.username, user_path(ut.user) %>
       @ $<%= ut.cost %> / day -
+      <% if current_user != ut.user %>
       <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:ut.id,cart_id:@cart.id})%>
+      <% end %>
     <% end %>
   </ul>
 </p>

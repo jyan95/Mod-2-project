@@ -1,12 +1,20 @@
 <ul>
     <p>
-      <%= link_to @instance.user.username, user_path(@instance.user) %>
+      <% if @instance.image %>
+      <%= image_tag @instance.image %>
+      <% end %>
       <br>
-      <%= link_to @instance.tool.name, tool_path(@instance.tool) %> @ $<%= @instance.cost %>/ day
+      <%= link_to @instance.tool_name, tool_path(@instance.tool) %>
+      <br>
+      Owner: <%= link_to @instance.username, user_path(@instance.user) %>
+      <br>
+      Cost: $<%= @instance.cost %>/ day
       <br>
       Description: <%= @instance.description %>
     </p>
     <p>
+      <% if current_user != @instance.user %>
       <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:@instance.id,cart_id:@cart.id})%>
+      <% end %>
     </p>
 </ul>

@@ -22,7 +22,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    # @instance.set_total
+    @instance.set_total
   end
 
   def checkout
