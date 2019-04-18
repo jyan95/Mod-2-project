@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   # before_action :authorized comes from ApplicationController
-  # skip_before_action :authorized, only: [:new, :login]
+  # skip_before_action :authorized, only: [:new, :login]g
 
   def new
     @user = User.new
