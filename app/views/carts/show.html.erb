@@ -1,4 +1,18 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h2><%= @instance.formatted_date %></h2>
 
-<p><%= @instance.user %></p>
+<% @instance.user_tools.each do |ut| %>
+<br>
+<p>
+  <%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %>
+  <% unless @instance.complete %>
+  <%= link_to "Remove", remove_path(cart_tool:{user_tool_id:ut.id, cart_id:@instance.id}), method: :post %>
+  <% end %>
+</p>
+<% end %>
+<br>
+<p>Subtotal: $<%= @instance.total %>
+  <% if !@instance.complete && @instance.user_tools.length > 0 %>
+  <br>
+  <%=  link_to "Checkout" , checkout_path, class: 'btn btn-warning' %>
+  <% end %>
+</p>

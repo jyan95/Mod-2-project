@@ -5,8 +5,17 @@ Rails.application.routes.draw do
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
-  get '/tools/:id/add-tool', to: 'carts#create', as: 'add'
 
+  # cart feature and user specific cart views
+  get '/tools/:id/add-tool', to: 'carts#add', as: 'add'
+  post '/remove-tool', to: 'carts#remove', as: 'remove'
+  get '/carts', to: 'carts#index', as: 'carts'
+  get '/carts/:id', to: 'carts#show', as: 'cart'
+  patch '/checkout', to: 'carts#checkout'
+
+  # User
+  get '/user/:id/edit', to: 'users#edit', as: 'edit_user'
+  patch '/edit_user', to: 'users#update'
 
   # Create new tool by the user routes
   get '/user/:id/add-tool', to: 'users#new_tool', as: 'new_tool'
@@ -16,29 +25,24 @@ Rails.application.routes.draw do
   get '/user/:id/edit-tool', to: 'users#edit_tool'
   patch '/user/:id', to: 'users#update_tool'
 
+  # view user specific tools
+  get '/user-tools/:id', to: 'users#user_tool', as: "user_tool"
+  get '/user-tools', to: 'users#user_tools', as: 'user_tools'
+
   # Login and logout routes
-  get '/signup', to: 'sessions#new', as: 'login'
+  get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
+  # Sign up routes
+  get '/signup', to: 'users#new', as: 'signup'
 
+  # get '/tools/:category', to: 'category#'
 
-  # get 'carts/index'
-  # get 'carts/show'
-  # get 'carts/edit'
-  # get 'carts/new'
-  # get 'tools/index'
-  # get 'tools/show'
-  # get 'tools/edit'
-  # get 'tools/new'
-  # get 'users/show'
-  # get 'users/edit'
-  # get 'users/new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  resources :users, except: :index
+  # resources :users, except: :index
   resources :categories, only: [:index, :show]
   resources :tools, only: [:index, :show]
-  resources :carts
+  # resources :carts
+  resources :users, except: [:new]
 
 end

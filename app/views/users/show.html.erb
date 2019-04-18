@@ -1,13 +1,39 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-4">
-      <%= @user.username %>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            <p><%= @user.username %></p>
+            <p>Name: <%= @user.name %></p>
+            <p>Phone: <%= @user.phone_number %></p>
+          </ul>
+        </div>
+        <div class="col-md-10 offset-1">
+          <%= link_to 'Add Tool', new_tool_path(@user), class: 'btn btn-danger' %>
+        </div>
+      </div>
+      <div class="row"></div>
     </div>
-    <div class="col-xs-8">
-      Name: <%= @user.first_name + ' ' + @user.last_name %>
-    </div>
-    <div class="col-xs-8">
-      Phone: <%= @user.phone_number %>
-    </div>
+    <div class="col-md-8">
+      <%= @user.user_tools.each do |tool| %>
+        <div class="row">
+            <div class="col-md-4">
+              <div class="card" style="width: 18rem;">
+                <img src="<%= tool.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Text.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+          </div>
+        </div>
+      <% end %>
   </div>
 </div>
