@@ -1,4 +1,3 @@
-
 <div class="container">
   <%= render 'layouts/messages' %>
   <div class="row">
@@ -16,7 +15,6 @@
           <% @all.each do |tool| %>
             <% tool.user_tools.each do |ut| %>
               <% if ut.available %>
-                <!-- <div class="col-sm-4"> -->
                     <div class="card w-90 h-90">
                       <a href="<%= tool_path(ut.tool) %>"><img src="<%= ut.image %>" class="card-img-top" alt="..."></a>
                       <div class="card-body">
@@ -27,7 +25,6 @@
                         <p>Cost: $<%= ut.cost %>/day</p>
                       </div>
                     </div>
-                <!-- </div> -->
               <% end %>
             <% end %>
           <%end %>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   # Main Page
-  get '/', to: 'welcome#home', as: 'root'
-
+  root 'welcome#home'
+  
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
 
