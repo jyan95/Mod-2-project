@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/tools/:id/add-tool', to: 'carts#add', as: 'add'
   post '/remove-tool', to: 'carts#remove', as: 'remove'
   get '/past-orders', to: 'carts#index', as: 'carts'
+  get '/past-order/:id', to: 'carts#past_order', as: 'past_order'
   get '/carts/:id', to: 'carts#show', as: 'cart'
   patch '/checkout', to: 'carts#checkout'
 

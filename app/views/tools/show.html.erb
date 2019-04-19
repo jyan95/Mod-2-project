@@ -1,39 +1,42 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <h1><%= @instance.name %></h1>
+
 
   </div>
   <div class="col-sm-8">
-    <h1>Current Listings</h1>
+    <h1>Current Listings:</h1>
   </div>
 </div>
 
-<div class="col-md-9 offset-3">
+<div class="col-md-10 offset-2">
   <% @instance.user_tools.each do |ut| %>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3 w-75 h-50">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="<%= ut.image %>" class="card-img" alt="...">
+          <img src="<%= ut.image %>" class="card-img w-75 h-100" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <div class="row">
-              <h5 class="card-title"><%= @instance.name %></h5>
-            </div>
-            <div class="row">
-              <p class="card-text"><%= ut.description %></p>
-
-            </div>
+            <h5 class="card-title"><%= @instance.name %></h5>
+            <p class="card-text"><%= ut.description %></p>
             <div class="row">
               <div class="col-md-4">
                 <p class="card-text">$<small class="text-muted"><%= ut.cost %> / day </small></p>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-4">
                 <small> Offered by: <%= link_to ut.user.username, user_path(ut.user)%></small>
-                <small> <% if current_user != ut.user %>
-                    <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:ut.id,cart_id:@cart.id}), class: 'btn btn-primary'%>
-                  <% end %></small>
+              </div>
+              <div class="col-md-4">
+                <small>
+                  <% if ut.available %>
+                    <% if current_user != ut.user %>
+                      <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:ut.id,cart_id:current_cart.id}), class: 'btn btn-primary'%>
+                    <% end %>
+                  <% else %>
+                  <p>Currently Unavailable</p>
+                  <% end %>
+                </small>
               </div>
             </div>
           </div>

@@ -33,7 +33,7 @@ class User < ApplicationRecord
     user_tool = UserTool.new(user_tool_params)
     user_tool.user_id = id
     user_tool.available = true
-    tool = Tool.new(tool_params)
+    tool = Tool.find_or_create_by(tool_params)
     tool.category_id = category_id[:user_tools]
     tool.save
     user_tool.tool_id = tool.id

@@ -1,0 +1,12 @@
+<h2><%= @cart.formatted_date %></h2>
+
+<% @cart.user_tools.each do |ut| %>
+<br>
+<p>
+  <%= link_to ut.tool.name, user_tool_path(ut) %> -  $<%= ut.cost %>
+</p>
+<% end %>
+<br>
+<p>Subtotal: $<%= @cart.total %>
+  
+</p>

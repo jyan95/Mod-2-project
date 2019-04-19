@@ -14,4 +14,5 @@ class UserTool < ApplicationRecord
   def username
     self.user.username
   end
+
 end

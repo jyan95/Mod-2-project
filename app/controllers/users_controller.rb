@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       @current_cart = Cart.create(user_id: @user.id)
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to the Tools sharing website #{@user.username}"
+      flash[:success] = "Welcome to Toolbox, #{@user.username}!"
       redirect_to root_path
     else
       render 'new'
@@ -40,14 +40,8 @@ class UsersController < ApplicationController
   end
 
   def user_tool
-      @user = current_user
-      if @user.user_tools.length > 0
-        @usertool = UserTool.find(params[:id])
-        @cart = current_cart
-      else
-        flash[:danger] = "You have no tools"
-        redirect_to @user
-      end
+    @usertool = UserTool.find(params[:id])
+    @cart = current_cart
   end
 
   def user_tools

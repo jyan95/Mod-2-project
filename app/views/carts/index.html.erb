@@ -6,7 +6,7 @@
   <% @carts.each do |cart| %>
     <ul>
       <li>
-        <%= link_to cart.formatted_date, cart_path(cart) %>
+        <%= link_to cart.formatted_date, past_order_path(cart) %>
         <br>
         Tools: <% cart.tools.each do |t| %>
           <%= t.name %>

@@ -4,27 +4,29 @@
     <div class="row">
       <div class="col-md-3 col-sm-3">
         <h3>Categories:</h3>
-        <% Category.all.each do |category| %>
+        <% @all.each do |category| %>
           <li><%= link_to category.name, category %></li>
         <% end %>
       </div>
       <div class="col-md-9 col-sm-9">
         <div class="row">
-          <h1> <%= @category.name %></h1>
-          <div class="card-deck">
+          <h1> <%= @category.name %>: (<%= "#{@category.tools.length}" %>)</h1>
+          <div class="card-columns"> <!-- was "card-deck" -->
             <% @category.tools.each do |tool| %>
-                  <div class="col-sm-4">
-                    <div class="card w-100 h-100">
-                      <a href="<%= tool_path(tool) %>"><img src="<%#= tool.get_image  %>" class="card-img-top" alt="..."></a>
+                  <!-- <div class="col-sm-4"> -->
+                    <div class="card w-90 h-90">
+                      <a href="<%= tool_path(tool) %>"><img src="<%= tool.get_image  %>" class="card-img-top"></a>
                       <div class="card-body">
-                        <h5 class="card-title"><%= tool.name.capitalize %></h5>
+                        <%= tool.format %>
+                      </div>
+                      <div class="card-footer">
+                        <%= "Current listings: #{tool.user_tools.length}" %>
                       </div>
                     </div>
-                  </div>
+                  <!-- </div> -->
             <%end %>
           </div>
         </div>
       </div>
     </div>
 </div>
-

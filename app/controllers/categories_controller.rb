@@ -9,5 +9,6 @@ class CategoriesController < ApplicationController
 
   def get_instance
     @category = Category.find(params[:id])
+    @all = Category.all
   end
 end
