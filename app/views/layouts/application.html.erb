@@ -11,14 +11,7 @@
   <body>
   
     <%= render 'layouts/navigation' %>
-    <%# unless root_path %>
-      <%#= render home %>
-    <%# else %>
-<!--      <div class="main-container">-->
-        <%= yield %>
-<!--      </div>-->
-    <%# end %>
-
+      <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

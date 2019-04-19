@@ -1,5 +1,4 @@
 <div class="container">
-
     <%= render 'layouts/messages' %>
     <div class="row">
       <div class="col-md-3 col-sm-3">
@@ -13,18 +12,17 @@
           <h1> <%= @category.name %></h1>
           <div class="card-deck">
             <% @category.tools.each do |tool| %>
-                  <div class="col-sm-4">
-                    <div class="card w-100 h-100">
-                      <a href="<%= tool_path(tool) %>"><img src="<%#= tool.get_image  %>" class="card-img-top" alt="..."></a>
-                      <div class="card-body">
-                        <h5 class="card-title"><%= tool.name.capitalize %></h5>
-                      </div>
-                    </div>
+              <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                  <a href="<%= tool_path(tool) %>"><img src="<%#= tool.get_image  %>" class="card-img-top" alt="..."></a>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= tool.name.capitalize %></h5>
                   </div>
+                </div>
+              </div>
             <%end %>
           </div>
         </div>
       </div>
     </div>
 </div>
-

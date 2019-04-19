@@ -14,12 +14,9 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
-    # @user = User.find(params[:user])
   end
 
   def create
-    # byebug
-    # user = User.find(params[:id])
     tool = Tool.new(tool_params)
     tool.add_user_tool_params(user_tool_params)
     if tool.save
