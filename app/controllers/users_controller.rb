@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       @current_cart = Cart.create(user_id: @user.id)
       session[:user_id] = @user.id
       flash[:success] = "Welcome to Toolbox, #{@user.username}!"
-      redirect_to root_path
+      redirect_to about_path
     else
       render 'new'
     end
