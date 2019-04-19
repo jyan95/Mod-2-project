@@ -4,8 +4,9 @@ class CartsController < ApplicationController
   def add
     @cart_tool = CartTool.find_or_create_by(cart_params)
     @cart_tool.cart.set_total
+    tool = @cart_tool.user_tool.tool
     flash[:notice] = "Successfully added to cart"
-    redirect_to cart_path
+    redirect_to tools_path(tool)
   end
 
   def remove

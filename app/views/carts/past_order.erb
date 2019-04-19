@@ -8,5 +8,53 @@
 <% end %>
 <br>
 <p>Subtotal: $<%= @cart.total %>
-  
+
 </p>
+
+<div class="container">
+  <h2><%= @cart.formatted_date %></h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="d-flex flex-column">
+        <% @cart.user_tools.each do |ut| %>
+
+        <div class="card" style="width: 30rem">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <a href="<%= tool_path(ut.tool) %>"><img src="<%= ut.image %>" class="card-img-top" alt="..."></a>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= ut.tool.name.capitalize %></h5>
+                <p class="card-text"><%= ut.description %></p>
+                $<%= ut.cost %>/day
+              </div>
+              <div class="card text-right">
+                <% unless @cart.complete %>
+                <%= link_to "Remove", remove_path(cart_tool:{user_tool_id:ut.id, cart_id:@cart.id}), method: :post, class:'btn btn-primary' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      </div>
+      <div class="col-md-6" >
+        <div class="row">
+          <div class="col-md-6">
+            <h2>
+              Subtotal: $<%= @cart.total %>
+            </h2>
+          </div>
+          <div class="col-md-6">
+            <% if !@cart.complete && @cart.user_tools.length > 0 %>
+            <%=  link_to "Checkout" , checkout_path, class: 'btn btn-primary', method: :patch %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+  </div>
+</div>

@@ -14,12 +14,68 @@
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+.bg-light {
+  background-color: #ff9900
+  !important;
+}
 @import "bootstrap";
+
+
+
 
 //.main-container {
 //  width: 75vw;
 //  margin: auto;
 //}
+
+.centered {
+ position: absolute;
+ top: 40%;
+ left: 25%;
+ // margin-top: 50px;
+ // margin-left: -100px;
+}
+
+#logo {
+ float: left;
+ font-size: 1.7em;
+ color: #000;
+ text-transform: uppercase;
+ letter-spacing: -1px;
+ font-weight: bold;
+}
+
+#logo2 {
+ text-align: center;
+ font-size: 10em;
+ color: #fff;
+ text-transform: uppercase;
+ letter-spacing: -1px;
+ font-weight: bold;
+}
+
+body {
+  background-color: #e6e6e6;
+}
+
+h1,h2,h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: black;
+  // font-family: 'Poiret One', cursive;
+  // font-family: 'Syncopate', sans-serif;
+  font-family: 'Cabin', sans-serif;
+  text-transform: uppercase;
+}
+
+.right {
+  float: right;
+  position: relative;
+}
+
+.btn-margin {
+  margin-bottom: 5px;
+}
 
 #btn-move-down {
   margin: 10px 0;
@@ -30,7 +86,7 @@
   float: bottom;
 }
 
-ul li a.btn.btn-warning {
+ul li a.btn.btn-primary {
   margin-left: 15px;
 }
 
@@ -97,14 +153,37 @@ footer a:hover {
   //margin: auto;
   min-width: 50%;
   min-height: 50%;
+  // filter: blur(1px);
+  // -webkit-filter: blur(1px);
 }
 
  #bg {
   //position: fixed;
-  //top: 0;
+  top: 0;
   left: 0;
+
 
    /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
+}
+
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+.subtotal_tag {
+  float: right;
 }

@@ -8,22 +8,16 @@ class SessionsController < ApplicationController
     render :new #looks in app/views/sessions/new.html.erb
   end
 
-  def login #handles the POST request to /login
-    # find out if we have a user with this username
+  def login
     @user = User.find_by(username: params[:session][:username])
-    @current_cart = Cart.find_by(user_id: @user.id, complete: false)
-    # get that user record from DB
-    # authenticate this user; determine if they provided the correct pw
     if @user && @user.authenticate(params[:session][:password])
-
-      # once we have found the user, create a new session for them
+      @current_cart = Cart.find_by(user_id: @user.id, complete: false)
       session[:user_id] = @user.id
-      # redirect_to user_path(@user)
       flash[:success] = "Logged in successfully"
       redirect_to @user
     else
       flash[:danger] = "Wrong username or password"
-      redirect_to login_path
+      redirect_to login_path and return
     end
   end
 

@@ -29,6 +29,11 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: VALID_EMAIL_REGEX }
 
+  PASSWORD_FORMAT = /(?=.*\d)(?=.*([a-z]|[A-Z])){6,}/
+  validates :password,
+            length: { in: 6..20 },
+            format: { with: PASSWORD_FORMAT, message: "Must be at least 6 characters long with numbers and letters"}
+
   def add_user_tool_params(user_tool_params, tool_params, category_id)
     user_tool = UserTool.new(user_tool_params)
     user_tool.user_id = id

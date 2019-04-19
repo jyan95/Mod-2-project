@@ -1,20 +1,52 @@
 
 <div class="container">
-  <%= render 'layouts/messages' %>
-
 
   <% @carts.each do |cart| %>
-    <ul>
-      <li>
-        <%= link_to cart.formatted_date, past_order_path(cart) %>
+  <h2><%= cart.formatted_date %></h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="d-flex flex-column">
+        <% cart.user_tools.each do |ut| %>
         <br>
-        Tools: <% cart.tools.each do |t| %>
-          <%= t.name %>
+
+        <div class="card" style="width: 30rem">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <a href="<%= tool_path(ut.tool) %>"><img src="<%= ut.image %>" class="card-img-top" alt="..."></a>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= ut.tool.name.capitalize %></h5>
+                <p class="card-text"><%= ut.description %></p>
+                $<%= ut.cost %>/day
+              </div>
+            </div>
+          </div>
+        </div>
         <% end %>
-        <br>
-        Subtotal: <%= cart.total %>
-      </li>
-    </ul>
+      </div>
+
+      </div>
+      <div class="col-md-6" >
+        <div class="row">
+          <div class="col-md-6">
+            <h2>
+              Subtotal: $<%= cart.total %>/day
+            </h2>
+          </div>
+          <div class="col-md-6">
+            <% if !cart.complete && cart.user_tools.length > 0 %>
+            <%=  link_to "Checkout" , checkout_path, class: 'btn btn-primary', method: :patch %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+  </div>
   <% end %>
+
+</div>
+
+<div class="container">
 
 </div>

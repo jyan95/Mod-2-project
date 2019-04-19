@@ -2,3 +2,23 @@
   <%= image_tag("rootpage.jpg", style:'height:auto;width:100%;') %>
   <%= render 'layouts/footer' %>
 </div>
+
+<div class="container bg-text" >
+  <div class="row">
+    <div class="col mx-auto">
+      <!-- <div class="centere"> -->
+        <%= link_to "Toolbox", root_path, class: "navbar-brand", id: "logo2" %>
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2 offset-4">
+      <%= link_to "Login", login_path, class:"btn btn-primary btn-lg btn-block" %>
+    </div>
+    <div class="col-2">
+      <%= link_to "Sign Up", signup_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+
+</div>
