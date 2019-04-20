@@ -23,7 +23,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart = current_cart
+    @cart = Cart.find(params[:id])
     @cart.set_total
   end
 

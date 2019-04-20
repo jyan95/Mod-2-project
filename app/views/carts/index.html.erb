@@ -1,8 +1,9 @@
 
 <div class="container">
+  <h1>Your Past Transactions:</h1>
 
   <% @carts.each do |cart| %>
-  <h2><%= cart.formatted_date %></h2>
+  <h2><%= link_to cart.formatted_date, cart_path(cart) %></h2>
   <div class="row">
     <div class="col-md-6">
       <div class="d-flex flex-column">

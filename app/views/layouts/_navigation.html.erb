@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-color">
+  <% if logged_in? %>
   <%= link_to "Toolbox", tools_path, class: "navbar-brand", id: "logo" %>
+  <% else %>
+  <%= link_to "Toolbox", root_path, class: "navbar-brand", id: "logo" %>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

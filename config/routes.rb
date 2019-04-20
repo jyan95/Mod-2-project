@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # Main Page
   root 'welcome#home'
-  
+
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
 
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   # Sign up routes
   get '/signup', to: 'users#new', as: 'signup'
+  get '/users', to: 'welcome#home'
 
   # get '/tools/:category', to: 'category#'
 
@@ -45,6 +46,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :tools, only: [:index, :show]
   # resources :carts
-  resources :users, except: [:new]
+  resources :users, except: [:new,:index]
 
 end

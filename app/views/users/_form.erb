@@ -1,12 +1,14 @@
-<%= render 'shared/errors', obj: @user %>
+
 
 <div class="row">
+
   <div class="col-md-12">
+    <%= render 'shared/errors', obj: @user %>
     <%= form_for(@user, :html => { class: "form-horizontal", role: "form" }) do |f| %>
 
       <div class="form-group">
-        <div class="control-label col-sm-2">
-          <%= f.label :username %>
+        <div class="col-sm-2">
+          <%= f.label :username, "Username:" %>
         </div>
         <div class="col-sm-3">
           <%= f.text_field :username, class: "form-control", placeholder: "username", autofocus: true %>
@@ -14,8 +16,8 @@
       </div>
 
       <div class="form-group">
-        <div class="control-label col-sm-2">
-          <%= f.label :email %>
+        <div class="col-sm-2">
+          <%= f.label :email, "Email:" %>
         </div>
         <div class="col-sm-3">
           <%= f.email_field :email, class: "form-control", placeholder: "email" %>
@@ -23,8 +25,8 @@
       </div>
 
       <div class="form-group">
-        <div class="control-label col-sm-2">
-          <%= f.label :password %>
+        <div class="col-sm-2">
+          <%= f.label :password, 'Password (at least 6 characters including numbers and letters):' %>
         </div>
         <div class="col-sm-3">
           <%= f.password_field :password, class: "form-control", placeholder: "password" %>
@@ -32,26 +34,26 @@
       </div>
 
       <div class="form-group">
-        <div class="control-label col-2">
-          <%= f.label :first_name %>
+        <div class="col-sm-2">
+          <%= f.label :first_name, "First Name:" %>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3">
           <%= f.text_field :first_name, class: "form-control", placeholder: "first name" %>
         </div>
       </div>
 
       <div class="form-group">
-        <div class="control-label col-3">
-          <%= f.label :last_name %>
+        <div class="col-sm-2">
+          <%= f.label :last_name, "Last Name:" %>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3">
           <%= f.text_field :last_name, class: "form-control", placeholder: "last name" %>
         </div>
       </div>
 
       <div class="form-group">
-        <div class="control-label col-sm-2">
-          <%= f.label :phone_number %>
+        <div class="col-sm-2">
+          <%= f.label :phone_number, "Phone Number:" %>
         </div>
         <div class="col-sm-3">
           <%= f.text_field :phone_number, class: "form-control", placeholder: "phone number" %>
