@@ -1,20 +1,11 @@
-#Flatiron Mod 2 project:
+Toolbox is a renter-lender marketplace, where you can list tools for rent, and rent from other users.
 
-Toolbox
+You can start by searching for the tool(s) you need by all tools, or by category.
+     
+Tools may have multiple listings - when you find the one you want, add it to your cart!
 
-You got tools? We are coming for you!
+Once you're finished, go to your cart and checkout.
+  
+Pretend there's a checkout form, and our partners will have your tool(s) delivered to you in no time!
 
-<!--
-def log_in
-  current_cart = Cart.new
-end
-
-def checkout
-  current_cart.complete == true
-end
--->
-
-
-#Developers
-
-Yevgeniy and Josh
+(unfortunately, we have yet to build out the rent and return functionality, so just use your imagination)
