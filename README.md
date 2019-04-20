@@ -15,8 +15,9 @@ Pretend there's a checkout form, and our partners will have your tool(s) deliver
 3. If you do not have Ruby, [get it here](https://www.ruby-lang.org/en/documentation/installation/)
 4. Run `gem install bundler`
 5. Run `bundle` or `bundle install`
-6. Start up a local server with `rails s`
-7. Open your browser and navigate to `localhost:3000` in your URL
+6. Run `rails db:migrate` and `rails db:seed`
+7. Run `rails s`
+8. Open your browser and navigate to `localhost:3000` in your URL
 
 ### Contributors
 [YevgeniySob](https://github.com/YevgeniySob), [jyan95](https://github.com/jyan95)
