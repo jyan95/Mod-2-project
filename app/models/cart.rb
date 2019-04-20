@@ -18,7 +18,7 @@ class Cart < ApplicationRecord
   end
 
   def costs
-    user_tools.map{|ut| ut.cost}
+    user_tools.map{|ut| ut.cost.round(2)}
   end
 
   def counterparties

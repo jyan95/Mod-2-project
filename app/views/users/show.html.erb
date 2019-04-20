@@ -1,3 +1,6 @@
+<div align="center">
+  <%= render 'layouts/messages' %>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-sm-4">
@@ -22,17 +25,33 @@
       </div>
     </div>
     <div class="col-md-8">
-      <% @user.user_tools.map do |tool| %>
+      <h2><%= "#{@user.username}'s" %> Inventory: <%= "(#{@user.user_tools.length})" %></h2>
+      <% @user.user_tools.map do |ut| %>
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <a href="<%= tool_path(tool) %>"><img src="<%= tool.image %>" class="card-img" alt="..."></a>
+              <a href="<%= user_tool_path(ut) %>"><img src="<%= ut.image %>" class="card-img" alt="..."></a>
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= tool.tool.name %></h5>
-                <p class="card-text"><%= tool.description %></p>
-                <p class="card-text">$<small class="text-muted"><%= tool.cost %></small></p>
+                <h5 class="card-title"><%= ut.tool.name %></h5>
+                <p class="card-text"><%= ut.description %></p>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p class="card-text"><small class="text-muted">Cost: $<%= ut.cost %>/day</small></p>
+                </div>
+                <div class="col-sm-6">
+                  <small>
+                    <% if ut.available %>
+                      <% if current_user != ut.user %>
+                        <%= link_to "Add to Cart", add_path(cart_tool:{user_tool_id:ut.id,cart_id:current_cart.id}), class: 'btn btn-primary'%>
+                      <% end %>
+                    <% else %>
+                    <p>Currently Unavailable</p>
+                    <% end %>
+                  </small>
+                </div>
               </div>
             </div>
           </div>

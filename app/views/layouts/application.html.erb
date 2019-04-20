@@ -6,19 +6,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:600" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  
     <%= render 'layouts/navigation' %>
-    <%# unless root_path %>
-      <%#= render home %>
-    <%# else %>
-<!--      <div class="main-container">-->
         <%= yield %>
-<!--      </div>-->
-    <%# end %>
-
     <%= render 'layouts/footer' %>
   </body>
 </html>

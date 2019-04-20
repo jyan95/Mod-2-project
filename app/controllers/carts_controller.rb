@@ -4,14 +4,15 @@ class CartsController < ApplicationController
   def add
     @cart_tool = CartTool.find_or_create_by(cart_params)
     @cart_tool.cart.set_total
-    session[:cart_id] = @cart_tool.id
+    tool = @cart_tool.user_tool.tool
     flash[:notice] = "Successfully added to cart"
-    redirect_to tools_path
+    redirect_to tools_path(tool)
   end
 
   def remove
     cart_tool = CartTool.find_by(cart_params)
     cart_tool.destroy
+    flash[:success] = "Successfully removed #{cart_tool.user_tool.tool.name} from cart"
     redirect_to cart_path(current_cart)
   end
 
@@ -24,6 +25,10 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     @cart.set_total
+  end
+
+  def past_order
+    @cart = Cart.find(params[:id])
   end
 
   def checkout

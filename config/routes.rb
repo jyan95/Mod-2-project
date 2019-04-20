@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Main Page
-  get '/', to: 'welcome#home', as: 'root'
+  root 'welcome#home'
 
   get 'categories/show'
   get '/about', to: 'welcome#about', as: 'about'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/tools/:id/add-tool', to: 'carts#add', as: 'add'
   post '/remove-tool', to: 'carts#remove', as: 'remove'
   get '/past-orders', to: 'carts#index', as: 'carts'
+  get '/past-order/:id', to: 'carts#past_order', as: 'past_order'
   get '/carts/:id', to: 'carts#show', as: 'cart'
   patch '/checkout', to: 'carts#checkout'
 
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
 
   # Sign up routes
   get '/signup', to: 'users#new', as: 'signup'
+  get '/users', to: 'welcome#home'
 
   # get '/tools/:category', to: 'category#'
 
@@ -44,6 +46,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :tools, only: [:index, :show]
   # resources :carts
-  resources :users, except: [:new]
+  resources :users, except: [:new,:index]
 
 end
