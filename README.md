@@ -1,16 +1,3 @@
-Toolbox is a renter-lender marketplace, where you can list tools for rent, and rent from other users.
-
-You can start by searching for the tool(s) you need by all tools, or by category.
-     
-Tools may have multiple listings - when you find the one you want, add it to your cart!
-
-Once you're finished, go to your cart and checkout.
-  
-Pretend there's a checkout form, and our partners will have your tool(s) delivered to you in no time!
-
-(unfortunately, we have yet to build out the rent and return functionality, so just use your imagination)
-
-
 # Toolbox
 Welcome to Toolbox - a fullstack Ruby on Rails app
 
