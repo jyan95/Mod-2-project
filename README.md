@@ -13,7 +13,7 @@ We wanted to createa a simple renting marketplace for tools. The idea is that so
 ## Tech stack
 
 <b>Built with</b>
-- [Ruby on Rails](https://rubyonrails.org/) Backend 
+- [Ruby on Rails](https://rubyonrails.org/) Full Stack
 
 ## Install Instructions
 1. Clone this repository
